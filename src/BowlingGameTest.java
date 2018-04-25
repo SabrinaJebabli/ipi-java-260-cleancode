@@ -2,7 +2,6 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
-
 public class BowlingGameTest {
 
     BowlingGame game = new BowlingGame();
@@ -27,6 +26,34 @@ public class BowlingGameTest {
         game.roll(1);
         rollMany(17, 0);
         assertEquals(12, game.score());
+    }
+
+    @Test
+    public void bonusDuStrike(){
+        game.roll(10);
+        game.roll(5);
+        game.roll(2);
+        rollMany(15,0);
+        assertEquals(24,game.score());
+    }
+
+    @Test
+    public void queDesStrikes(){
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        rollMany(22,0);
+        assertEquals(300,game.score());
+
     }
 
     private void rollMany(int numberRolls, int numberPins) {
